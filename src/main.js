@@ -7,7 +7,7 @@ module.exports.execute = function (event, callback) {
   let applicationId = this.retrieveCredentials();
   //verify application id
   if (event.session.application.applicationId !== applicationId) {
-    callback(new Error('invalid applicationId'));
+    return callback(new Error('invalid applicationId'));
   }
 
   let response = {

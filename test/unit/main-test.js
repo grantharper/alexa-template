@@ -9,13 +9,27 @@ const chai = require('chai'),
 
 describe('main - unit test', function () {
   it('should respond to requests', function(){
-    sinon.stub(main, 'retrieveCredentials').callsFake(function(){
+    var credsStub = sinon.stub(main, 'retrieveCredentials').callsFake(function(){
       return mockCredentials.applicationId;
     });
     main.execute(event, function(err, response){
+      should.not.exist(err);
       should.exist(response);
       response.response.outputSpeech.text.should.equal('Hello and welcome to the alexa template');
     });
+    credsStub.restore();
+  });
+
+  it('should reject requests with an incorrect applicationId', function(){
+    var credsStub = sinon.stub(main, 'retrieveCredentials').callsFake(function(){
+      return "incorrect";
+    });
+    main.execute(event, function(err, response){
+      should.exist(err);
+      should.not.exist(response);
+      err.message.should.equal('invalid applicationId');
+    });
+    credsStub.restore();
   });
 });
 
