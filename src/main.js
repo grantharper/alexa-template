@@ -1,7 +1,7 @@
 'use strict'
 
 const credentials = require('./credentials'),
-  responseBase = require('./response-base');
+  responseCreator = require('./response/response-creator');
 
 module.exports.execute = function (event, callback) {
   let applicationId = this.retrieveCredentials();
@@ -9,17 +9,7 @@ module.exports.execute = function (event, callback) {
   if (event.session.application.applicationId !== applicationId) {
     return callback(new Error('invalid applicationId'));
   }
-
-  let response = {
-    version: '1.0',
-    response: {
-      outputSpeech: {
-        type: 'PlainText',
-        text: 'Hello and welcome to the alexa template',
-      },
-      shouldEndSession: true,
-    },
-  };
+  let response = responseCreator.basicSpeech('Hello, I want to tell you a secret.<amazon:effect name="whispered">I am not a human.</amazon:effect>');
 
   return callback(null, response);
 

@@ -1,7 +1,9 @@
 {
   "version": "1.0",
   "sessionAttributes": {
-    "string": "<object>"
+    "sessionTemplate": {
+      "var1": "value1"
+    }
   },
   "response": {
     "outputSpeech": {
