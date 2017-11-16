@@ -7,7 +7,6 @@
       "applicationId": "mock-app-id"
     },
     "attributes": {
-      "string": {}
     },
     "user": {
       "userId": "user",

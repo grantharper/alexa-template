@@ -1,3 +1,27 @@
-SayHello hello
-SayHello tell me hello
+AMAZON.NextIntent proceed
+AMAZON.NextIntent proceed to the next trick
+AMAZON.NextIntent proceed please
+AMAZON.NextIntent the next trick
+AMAZON.NextIntent next trick
+AMAZON.NextIntent get next trick
+AMAZON.NextIntent get the next trick
+AMAZON.NextIntent go to next trick
+AMAZON.NextIntent go to the next trick
+AMAZON.NextIntent get next
+AMAZON.NextIntent tell me the next trick
+AMAZON.NextIntent give me the next trick
+AMAZON.NextIntent next trick please
+
+AMAZON.RepeatIntent repeat trick
+AMAZON.RepeatIntent repeat the trick
+AMAZON.RepeatIntent repeat current trick
+AMAZON.RepeatIntent the current trick
+AMAZON.RepeatIntent current trick
+AMAZON.RepeatIntent repeat the current trick
+
+AMAZON.PreviousIntent previous trick
+AMAZON.PreviousIntent tell me the previous trick
+AMAZON.PreviousIntent give me the previous trick
+AMAZON.PreviousIntent the previous trick
+AMAZON.PreviousIntent go back one trick
 

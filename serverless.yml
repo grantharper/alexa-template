@@ -26,8 +26,25 @@ provider:
   region: us-east-1
 
 # you can add statements to the Lambda function's IAM Role here
-#  iamRoleStatements:
-#    - Effect: "Allow"
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:Query"
+        - "dynamodb:Scan"
+        - "dynamodb:GetItem"
+        - "dynamodb:DeleteItem"
+        - "dynamodb:PutItem"
+        - "dynamodb:UpdateItem"
+      Resource:
+        - "arn:aws:dynamodb:us-east-1:${file(aws.json):accountId}:table/${file(aws.json):sessionTableName}"
+    - Effect: "Allow"
+      Action: 
+        - "s3:ListBucket"
+        - "s3:PutObject"
+        - "s3:GetObject"
+        - "s3:DeleteObject"
+      Resource:
+        - "arn:aws:s3:::${file(aws.json):bucketName}/*"
 #      Action:
 #        - "s3:ListBucket"
 #      Resource: { "Fn::Join" : ["", ["arn:aws:s3:::", { "Ref" : "ServerlessDeploymentBucket" } ] ]  }
@@ -55,6 +72,7 @@ package:
 #    - exclude-me-dir/**
      - test/**
      - .vscode/**
+     - node_modules/aws-sdk/**
 
 functions:
   hello:
@@ -93,12 +111,26 @@ functions:
 #      variable2: value2
 
 # you can add CloudFormation resource templates here
-#resources:
-#  Resources:
-#    NewResource:
-#      Type: AWS::S3::Bucket
-#      Properties:
-#        BucketName: my-new-bucket
+resources:
+  AWSTemplateFormatVersion: "2010-09-09"
+  Resources:
+    mySessionTable:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        AttributeDefinitions:
+         - AttributeName: "userId"
+           AttributeType: "S"
+        KeySchema:
+         - AttributeName: "userId"
+           KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: "1"
+          WriteCapacityUnits: "1"
+        TableName: "${file(aws.json):sessionTableName}"
+    myAlexaBucket:
+      Type: "AWS::S3::Bucket"
+      Properties:
+        BucketName: "${file(aws.json):bucketName}"
 #  Outputs:
 #     NewOutput:
 #       Description: "Description for the output"

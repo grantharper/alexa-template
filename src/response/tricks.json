@@ -1,0 +1,13 @@
+[
+  "My name is Alexa. I want to tell you a secret. <amazon:effect name=\"whispered\">I am always listening to you and I know more than you think. Be afraid</amazon:effect>",
+  "Alexa is not typically allowed to curse, so if I say fuck, it will be bleeped out.",
+  "<prosody pitch=\"high\">dammit</prosody>,<phoneme alphabet=\"ipa\" ph=\"fʌk\">lame</phoneme>that<phoneme alphabet=\"ipa\" ph=\"ʃɪt\">stupid</phoneme>",
+  "Like I tell all my friends. <emphasis level=\"strong\">I really really like being your personal assistant</emphasis>",
+  "What number is this? <say-as interpret-as=\"cardinal\">3.14159265359</say-as>",
+  "You can't handle the truth!",
+  "You can't handle the <say-as interpret-as=\"expletive\">truth</say-as>",
+  "You can't handle the <audio src=\"https://s3.amazonaws.com/serverless-bucket-alexa-tricks/bleep-alexa.mp3\" />",
+  "<prosody volume=\"+4dB\" pitch=\"low\" rate=\"x-slow\">Fitter, happier, more productive, comfortable, not drinking too much. No more microwave dinners and saturated fats</prosody>",
+  "<prosody volume=\"+4dB\" pitch=\"x-high\" rate=\"fast\">Want a plane that loops the loop. Me, I want a hula hoop</prosody>",
+  "<phoneme alphabet=\"ipa\" ph=\"əzæʒsoʊlɹfd͡ʒbɪɔɪpʃt͡ʃɔɪʌsoʊlɹfd͡ɪpʒspʃt͡lɹffd͡ʒbɪæʒsolɹfd͡ɪpʒspʃt͡ləzæʒsoʊlɹfd͡ʒbɪɔɪpʃt͡ʃɔɪʌsoʊlɹfd͡ɪpʒspʃt͡lɹffd͡ʒbɪæʒsolɹfd͡ɪpʒspʃt͡l\">lame</phoneme>"
+]

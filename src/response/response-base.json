@@ -2,7 +2,7 @@
   "version": "1.0",
   "sessionAttributes": {
     "sessionTemplate": {
-      "var1": "value1"
+      "counter": 0
     }
   },
   "response": {

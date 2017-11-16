@@ -1,7 +1,13 @@
 {
   "intents": [
     {
-      "intent": "SayHello"
+      "intent": "AMAZON.NextIntent"
+    },
+    {
+      "intent": "AMAZON.RepeatIntent"
+    },
+    {
+      "intent": "AMAZON.PreviousIntent"
     }
   ]
 }

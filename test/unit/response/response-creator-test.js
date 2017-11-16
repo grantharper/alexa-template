@@ -10,7 +10,6 @@ describe('response creator - unit test', function () {
     let output = response.basicSpeech('hello');
     output.response.outputSpeech.type.should.equal('SSML');
     output.response.outputSpeech.ssml.should.equal('<speak>hello</speak>');
-    //output.response.reprompt.outputSpeech.ssml.should.equal('<ssml>hello</ssml>');
   });
 
 });

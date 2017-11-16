@@ -1,7 +1,10 @@
 'use strict'
 
-const credentials = require('./credentials'),
-  responseCreator = require('./response/response-creator');
+const aws = require('aws-sdk'),
+  docClient = new aws.DynamoDB.DocumentClient(),
+  credentials = require('./credentials'),
+  processRequest = require('./process-request'),
+  processSession = require('./process-session');
 
 module.exports.execute = function (event, callback) {
   let applicationId = this.retrieveCredentials();
@@ -9,12 +12,35 @@ module.exports.execute = function (event, callback) {
   if (event.session.application.applicationId !== applicationId) {
     return callback(new Error('invalid applicationId'));
   }
-  let response = responseCreator.basicSpeech('Hello, I want to tell you a secret.<amazon:effect name="whispered">I am not a human.</amazon:effect>');
 
-  return callback(null, response);
+  processSession.getSession(event, function (err, updatedEvent) {
+    if (err) {
+      console.error(err);
+      return callback(err);
+    } else {
+      if (updatedEvent) {
+        event = updatedEvent;
+      }
+      processRequest.process(event, function (err, response) {
+        if (err) {
+          return callback(err);
+        } else {
+
+          processSession.putSession(event, response, function (err, output) {
+            if (err) {
+              return callback(err);
+            } else {
+              return callback(null, response);
+            }
+          });
+
+        }
+      });
+    }
+  });
 
 }
 
-module.exports.retrieveCredentials = function (){
+module.exports.retrieveCredentials = function () {
   return credentials.applicationId;
 }
